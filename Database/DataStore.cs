@@ -33,7 +33,12 @@ namespace Apbd5.Database
         new Reservation { Id = 2, RoomId = 2, OrganizerName = "Anna Kowalska",  Topic = "C# Workshop",            Date = new DateOnly(2026, 5, 10), StartTime = new TimeOnly(10, 0), EndTime = new TimeOnly(12, 0), Status = "planned" },
         new Reservation { Id = 3, RoomId = 3, OrganizerName = "Piotr Wisniewski", Topic = "Project Consultation", Date = new DateOnly(2026, 5, 11), StartTime = new TimeOnly(14, 0), EndTime = new TimeOnly(15, 30), Status = "confirmed" },
         new Reservation { Id = 4, RoomId = 1, OrganizerName = "Maria Zielinska", Topic = "Data Structures Exam",  Date = new DateOnly(2026, 5, 12), StartTime = new TimeOnly(9, 0),  EndTime = new TimeOnly(11, 0), Status = "planned" },
-        new Reservation { Id = 5, RoomId = 5, OrganizerName = "Tomasz Lewandowski", Topic = "Docker Training",    Date = new DateOnly(2026, 5, 10), StartTime = new TimeOnly(13, 0), EndTime = new TimeOnly(16, 0), Status = "cancelled" }
+        new Reservation { Id = 5, RoomId = 5, OrganizerName = "Tomasz Lewandowski", Topic = "Docker Training",    Date = new DateOnly(2026, 5, 10), StartTime = new TimeOnly(13, 0), EndTime = new TimeOnly(16, 0), Status = "cancelled" },
+        new Reservation { Id = 6,  RoomId = 3,  OrganizerName = "Karolina Dabrowska",  Topic = "UX Design Seminar",       Date = new DateOnly(2026, 5, 13), StartTime = new TimeOnly(10, 0),  EndTime = new TimeOnly(11, 30), Status = "confirmed" },
+        new Reservation { Id = 7,  RoomId = 2,  OrganizerName = "Marek Wojcik",        Topic = "Database Lab",            Date = new DateOnly(2026, 5, 13), StartTime = new TimeOnly(12, 0),  EndTime = new TimeOnly(14, 0),  Status = "planned" },
+        new Reservation { Id = 8,  RoomId = 5,  OrganizerName = "Ewa Kaminska",        Topic = "Agile Methodology Workshop", Date = new DateOnly(2026, 5, 14), StartTime = new TimeOnly(9, 0),  EndTime = new TimeOnly(12, 0),  Status = "confirmed" },
+        new Reservation { Id = 9,  RoomId = 1,  OrganizerName = "Lukasz Grabowski",    Topic = "Operating Systems Lecture", Date = new DateOnly(2026, 5, 14), StartTime = new TimeOnly(15, 0), EndTime = new TimeOnly(17, 0),  Status = "cancelled" },
+        new Reservation { Id = 10, RoomId = 4,  OrganizerName = "Natalia Michalska",   Topic = "Thesis Defense Review",   Date = new DateOnly(2026, 5, 15), StartTime = new TimeOnly(11, 0), EndTime = new TimeOnly(12, 30), Status = "planned" },
     };
         public static int NextRoomId => Rooms.Count > 0 ? Rooms.Max(r => r.Id) + 1 : 1;
         public static int NextReservationId => Reservations.Count > 0 ? Reservations.Max(r => r.Id) + 1 : 1;

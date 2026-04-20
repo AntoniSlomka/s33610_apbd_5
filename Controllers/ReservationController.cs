@@ -1,6 +1,58 @@
-﻿namespace Apbd5.Controllers
+﻿using Apbd5.Models;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Apbd5.Controllers
 {
-    public class ReservationController
+    [ApiController]
+    [Route("api/[controller]")]
+    public class ReservationController : ControllerBase
     {
+        // x GET /api/reservations Returns all reservations
+        // x GET /api/reservations/{id} Returns a single reservation
+        // x GET /api/reservations?date=2026-05-10&status=confirmed&roomId=2
+        //   Returns reservations filtered by query string parameters
+        // POST /api/reservations Creates a new reservation
+        // PUT /api/reservations/{id} Updates an existing reservation
+        // DELETE /api/reservations/{id} Deletes a reservation
+
+        [HttpGet]
+        public ActionResult<List<Reservation>> GetAll(
+            [FromQuery] DateOnly? Date,
+            [FromQuery] String? Status,
+            [FromQuery] int? RoomId)
+        {
+            var reservations = Database.DataStore.Reservations.AsEnumerable();
+
+            if (Date.HasValue)
+            {
+                reservations = reservations.Where(r => r.Date == Date.Value);
+            }
+            if (Status != null)
+            {
+                reservations = reservations.Where(r => r.Status == Status);
+            }
+            if (RoomId.HasValue)
+            {
+                reservations = reservations.Where(r => r.RoomId == RoomId);
+            }
+
+            return Ok(reservations.ToList());
+        }
+
+        [HttpGet("{id:int}")]
+        public ActionResult<Reservation> GetById(int id)
+        {
+            var room = Database.DataStore.Reservations.FirstOrDefault(r => r.Id == id);
+
+            if (room == null)
+            {
+                return NotFound($"Reservation with id {id} was not found.");
+            }
+
+            return Ok(room);
+        }
+
+
+
     }
 }
