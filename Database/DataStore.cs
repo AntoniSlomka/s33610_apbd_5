@@ -10,7 +10,22 @@ namespace Apbd5.Database
         new Room { Id = 2, Name = "Lab 202",          BuildingCode = "A", Floor = 2, Capacity = 30,  HasProjector = true,  IsActive = true },
         new Room { Id = 3, Name = "Seminar Room 305", BuildingCode = "B", Floor = 3, Capacity = 20,  HasProjector = false, IsActive = true },
         new Room { Id = 4, Name = "Conference Room 1", BuildingCode = "B", Floor = 1, Capacity = 15, HasProjector = true,  IsActive = false },
-        new Room { Id = 5, Name = "Workshop Room 110", BuildingCode = "C", Floor = 1, Capacity = 40, HasProjector = true,  IsActive = true }
+        new Room { Id = 5, Name = "Workshop Room 110", BuildingCode = "C", Floor = 1, Capacity = 40, HasProjector = true,  IsActive = true },
+        new Room { Id = 6,  Name = "Lecture Hall 102",   BuildingCode = "A", Floor = 1, Capacity = 110, HasProjector = true,  IsActive = true },
+        new Room { Id = 7,  Name = "Lab 203",             BuildingCode = "A", Floor = 2, Capacity = 25,  HasProjector = true,  IsActive = true },
+        new Room { Id = 8,  Name = "Seminar Room 306",    BuildingCode = "B", Floor = 3, Capacity = 18,  HasProjector = false, IsActive = true },
+        new Room { Id = 9,  Name = "Conference Room 2",   BuildingCode = "B", Floor = 1, Capacity = 12,  HasProjector = true,  IsActive = true },
+        new Room { Id = 10, Name = "Workshop Room 111",   BuildingCode = "C", Floor = 1, Capacity = 35,  HasProjector = true,  IsActive = false },
+        new Room { Id = 11, Name = "Lecture Hall 201",    BuildingCode = "C", Floor = 2, Capacity = 95,  HasProjector = true,  IsActive = true },
+        new Room { Id = 12, Name = "Lab 301",             BuildingCode = "B", Floor = 3, Capacity = 28,  HasProjector = false, IsActive = true },
+        new Room { Id = 13, Name = "Seminar Room 401",    BuildingCode = "A", Floor = 4, Capacity = 22,  HasProjector = true,  IsActive = true },
+        new Room { Id = 14, Name = "Conference Room 3",   BuildingCode = "C", Floor = 2, Capacity = 10,  HasProjector = false, IsActive = false },
+        new Room { Id = 15, Name = "Workshop Room 205",   BuildingCode = "A", Floor = 2, Capacity = 45,  HasProjector = true,  IsActive = true },
+        new Room { Id = 16, Name = "Lecture Hall 301",    BuildingCode = "B", Floor = 3, Capacity = 130, HasProjector = true,  IsActive = true },
+        new Room { Id = 17, Name = "Lab 104",             BuildingCode = "C", Floor = 1, Capacity = 32,  HasProjector = true,  IsActive = false },
+        new Room { Id = 18, Name = "Seminar Room 210",    BuildingCode = "C", Floor = 2, Capacity = 16,  HasProjector = false, IsActive = true },
+        new Room { Id = 19, Name = "Conference Room 4",   BuildingCode = "A", Floor = 3, Capacity = 14,  HasProjector = true,  IsActive = true },
+        new Room { Id = 20, Name = "Workshop Room 312",   BuildingCode = "B", Floor = 3, Capacity = 50,  HasProjector = false, IsActive = true },
     };
         public static List<Reservation> Reservations { get; } = new()
     {

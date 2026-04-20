@@ -8,11 +8,11 @@ namespace Apbd5.Models
 
         [Required]
         [MinLength(1)]
-        public String Name { get; set; } = String.Empty;
+        public string Name { get; set; } = String.Empty;
 
         [Required]
         [MinLength(1)]
-        public String BuildingCode { get; set; } = String.Empty;
+        public string BuildingCode { get; set; } = String.Empty;
 
         [Required]
         public int Floor { get; set; }

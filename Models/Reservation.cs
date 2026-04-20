@@ -12,35 +12,23 @@ namespace Apbd5.Models
 
         [Required]
         [MinLength(1)]
-        public String OrganizerName { get; set; } = String.Empty;
+        public string OrganizerName { get; set; } = String.Empty;
 
         [Required]
         [MinLength(1)]
-        public String Topic { get; set; } = String.Empty;
+        public string Topic { get; set; } = String.Empty;
 
         [Required]
         public DateOnly Date { get; set; }
 
         [Required]
-        
+        [TimeBefore(nameof(EndTime))]
         public TimeOnly StartTime { get; set; }
 
         [Required]
         public TimeOnly EndTime { get; set; }
 
         [Required]
-        public String Status { get; set; } = String.Empty;
-
-        public Reservation(int Id, int RoomId, String OrganizerName, String Topic, DateOnly Date, TimeOnly StartTime, TimeOnly EndTime, String status)
-        {
-            this.Id = Id;
-            this.RoomId = RoomId;
-            this.OrganizerName = OrganizerName;
-            this.Topic = Topic;
-            this.Date = Date;
-
-
-        }
-
+        public string Status { get; set; } = String.Empty;
     }
 }
