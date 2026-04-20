@@ -11,10 +11,10 @@ namespace Apbd5.Controllers
         // x GET /api/rooms/{id} Returns a single room by its identifier
         // x GET /api/rooms/building/{buildingCode}
         // x GET /api/rooms?minCapacity=20&hasProjector=true&activeOnly=true
-        // Returns rooms filtered by query string parameters
+        //   Returns rooms filtered by query string parameters
         // x POST /api/rooms Adds a new room
-        // PUT /api/rooms/{id} Updates the full room data
-        // DELETE /api/rooms/{id} Deletes a room
+        // x PUT /api/rooms/{id} Updates the full room data
+        // x DELETE /api/rooms/{id} Deletes a room
 
         [HttpGet]
         public ActionResult<List<Room>> GetAll(
@@ -59,7 +59,6 @@ namespace Apbd5.Controllers
             return Ok(rooms);
         }
 
-
         [HttpPost]
         public ActionResult<Room> CreateRoom(Room room)
         {
@@ -69,5 +68,40 @@ namespace Apbd5.Controllers
             return CreatedAtAction(nameof(GetById), new {id =  room.Id}, room);
         }
 
+        [HttpPut("{id:int}")]
+        public ActionResult<Room> UpdateById(int id, Room room)
+        {
+            var existingRoom = Database.DataStore.Rooms.FirstOrDefault(r => r.Id == id);
+
+            if (existingRoom == null)
+            {
+                return NotFound($"Room with id {id} was not found.");
+            }
+
+            existingRoom.Name = room.Name;
+            existingRoom.BuildingCode = room.BuildingCode;
+            existingRoom.Floor = room.Floor;
+            existingRoom.Capacity = room.Capacity;
+            existingRoom.HasProjector = room.HasProjector;
+            existingRoom.IsActive = room.IsActive;
+
+            return Ok(existingRoom);
+
+        }
+
+        [HttpDelete("{id:int}")]
+        public IActionResult DeleteById(int id)
+        {
+            var room = Database.DataStore.Rooms.FirstOrDefault(r => r.Id == id);
+
+            if (room == null)
+            {
+                return NotFound($"Room with id {id} was not found.");
+            }
+
+            Database.DataStore.Rooms.Remove(room);
+
+            return NoContent();
+        }
     }
 }
