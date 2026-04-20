@@ -22,6 +22,7 @@ namespace Apbd5.Models
         public DateOnly Date { get; set; }
 
         [Required]
+        
         public TimeOnly StartTime { get; set; }
 
         [Required]
@@ -29,5 +30,17 @@ namespace Apbd5.Models
 
         [Required]
         public String Status { get; set; } = String.Empty;
+
+        public Reservation(int Id, int RoomId, String OrganizerName, String Topic, DateOnly Date, TimeOnly StartTime, TimeOnly EndTime, String status)
+        {
+            this.Id = Id;
+            this.RoomId = RoomId;
+            this.OrganizerName = OrganizerName;
+            this.Topic = Topic;
+            this.Date = Date;
+
+
+        }
+
     }
 }
