@@ -99,6 +99,11 @@ namespace Apbd5.Controllers
                 return NotFound($"Room with id {id} was not found.");
             }
 
+            if (Database.DataStore.Reservations.Exists(r => r.RoomId == id && r.Date > DateOnly.FromDateTime(DateTime.Now)))
+            {
+                return Conflict($"Future reservations exist for room {room.Id}");
+            }
+
             Database.DataStore.Rooms.Remove(room);
 
             return NoContent();

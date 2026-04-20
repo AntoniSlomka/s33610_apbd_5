@@ -55,12 +55,26 @@ namespace Apbd5.Controllers
         [HttpPost]
         public ActionResult<Reservation> CreateReservation(Reservation reservation)
         {
+
+            var room = Database.DataStore.Rooms.FirstOrDefault(r => r.Id == reservation.RoomId);
+
+            if (room == null)
+            {
+                return NotFound($"Room with id {reservation.RoomId} was not found.");
+            }
+
+            if (!room.IsActive)
+            {
+                return Conflict($"Room with id {reservation.RoomId} is inactive");
+            }
+
             if (Database.DataStore.Reservations
                 .Exists(r => r.RoomId == reservation.RoomId && r.Date == reservation.Date &&
                 (reservation.StartTime.IsBetween(r.StartTime, r.EndTime) || reservation.EndTime.IsBetween(r.StartTime, r.EndTime))))
             {
                 return Conflict($"A reservation for room {reservation.RoomId} alread exists between {reservation.StartTime} and {reservation.EndTime}.");
             }
+
             reservation.Id = Database.DataStore.NextReservationId;
             Database.DataStore.Reservations.Add(reservation);
 
@@ -99,7 +113,7 @@ namespace Apbd5.Controllers
         public IActionResult DeleteById(int id)
         {
             var reservation = Database.DataStore.Reservations.FirstOrDefault(r => r.Id == id);
-        
+
             if (reservation == null)
             {
                 return NotFound($"Reservation with id {id} was not found.");
