@@ -1,6 +1,11 @@
-﻿namespace Apbd5.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace Apbd5.Controllers
 {
-    public class RoomsController
+    [ApiController]
+    [Route("api/[controller]")]
+    public class RoomsController : ControllerBase
     {
+
     }
 }

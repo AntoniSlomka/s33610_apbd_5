@@ -4,20 +4,30 @@ namespace Apbd5.Models
 {
     public class Reservation
     {
+        
         public int Id { get; set; }
 
         [Required]
+        public int RoomId { get; set; }
+
+        [Required]
         [MinLength(1)]
-        public String name { get; set; } = String.Empty;
+        public String OrganizerName { get; set; } = String.Empty;
 
         [Required]
-        public int BuildingCode { get; set; }
+        [MinLength(1)]
+        public String Topic { get; set; } = String.Empty;
 
         [Required]
-        public int Floor { get; set; }
+        public DateOnly Date { get; set; }
 
-        public int Capacity { get; set; }
+        [Required]
+        public TimeOnly StartTime { get; set; }
 
+        [Required]
+        public TimeOnly EndTime { get; set; }
 
+        [Required]
+        public String Status { get; set; } = String.Empty;
     }
 }
